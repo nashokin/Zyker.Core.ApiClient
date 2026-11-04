@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path=".gitignore" />
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="Zyker.Core.ApiClient.Tests/Zyker.Core.ApiClient.Tests.csproj" />
+  <Project Path="Zyker.Core.ApiClient/Zyker.Core.ApiClient.csproj" />
+</Solution>

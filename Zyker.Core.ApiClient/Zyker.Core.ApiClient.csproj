@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <ImplicitUsings>disable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.3.13" />
+        <PackageReference Include="Microsoft.Extensions.Http" Version="10.0.14" />
+        <PackageReference Include="Microsoft.Extensions.Http.Diagnostics" Version="10.11.0" />
+        <PackageReference Include="Microsoft.Extensions.Http.Polly" Version="10.0.14" />
+        <PackageReference Include="Microsoft.Extensions.Http.Resilience" Version="10.11.0" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.14" />
+    </ItemGroup>
+
+</Project>
