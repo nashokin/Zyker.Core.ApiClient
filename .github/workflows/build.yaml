@@ -72,7 +72,12 @@ jobs:
           dotnet build --configuration Release
 
           dotnet test \
-            --configuration Release
+            --configuration Release \
+            /p:CollectCoverage=true \
+            /p:CoverletOutputFormat=opencover \
+            /p:CoverletOutput=coverage/
+
+            find . -name "*.opencover.xml"
 
           dotnet sonarscanner end \
             /d:sonar.token="${SONAR_TOKEN}"
