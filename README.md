@@ -1,6 +1,6 @@
 # Generic HTTP client
 
-[![.NET](https://github.com/nashokin/Zyker.Core.ApiClient/actions/workflows/dotnet.yml/badge.svg?branch=main)](https://github.com/nashokin/Zyker.Core.ApiClient/actions/workflows/dotnet.yml)
+[![Build](https://github.com/nashokin/Zyker.Core.ApiClient/actions/workflows/build.yaml/badge.svg?branch=main)](https://github.com/nashokin/Zyker.Core.ApiClient/actions/workflows/build.yaml)
 ![NuGet Version](https://img.shields.io/nuget/v/Zyker.Core.ApiClient)
 
 A reusable **.NET** base library for building **HTTP API** integrations. Features include typed request/response handling, **JSON** processing, file downloads, centralized error handling, configurable timeouts, and `Microsoft.Extensions.Logging` support.
