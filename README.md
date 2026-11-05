@@ -3,6 +3,8 @@
 [![.NET](https://github.com/nashokin/Zyker.Core.ApiClient/actions/workflows/dotnet.yml/badge.svg?branch=main)](https://github.com/nashokin/Zyker.Core.ApiClient/actions/workflows/dotnet.yml)
 ![NuGet Version](https://img.shields.io/nuget/v/Zyker.Core.ApiClient)
 
+A reusable **.NET** base library for building **HTTP API** integrations. Features include typed request/response handling, **JSON** processing, file downloads, centralized error handling, configurable timeouts, and `Microsoft.Extensions.Logging` support.
+
 ---
 
 ### Usage
@@ -10,17 +12,17 @@
  - Install **NuGet** package into your project -> `Install-Package Zyker.Core.ApiClient -version [PKG_VERSION]`
  - Inherit from -> `ApiClient` **base** class
 ```csharp
-public class FinnhubClient
-    : ApiClient, IFinnhubClient
+public class MyApiClient
+    : ApiClient, IMyApiClient
 {
     [CODE], etc. ...
 }
 ```
  - Instantiate the HTTP client with one of the constructors, passing HTTP client factory and/or JSON parsing options
 ```csharp
-public FinnhubClient(
+public MyApiClient(
     IHttpClientFactory httpClientFactory,
-    ILogger<FinnhubClient> logger,
+    ILogger<MyApiClient> logger,
     IConfiguration configuration)
     : base(httpClientFactory, logger)
 {
@@ -49,7 +51,7 @@ HttpRequestMessage httpRequestMessage = ApiClient
 ```
  - Send the request to the specified Uri
 ```csharp
-public async Task<FinnhubLatestSecurityPriceDto> GetEndOfDaySecurityPricesAsync(string MIC,
+public async Task<EndOfDayPricesDto> GetEndOfDayPricesAsync(string MIC,
     string localCode, string ISIN, CancellationToken cancellationToken)
 {
     _logger.LogInformation("{LOGGER_PREFIX} Request to get the EOD security prices for : "
@@ -79,9 +81,8 @@ public async Task<FinnhubLatestSecurityPriceDto> GetEndOfDaySecurityPricesAsync(
 
     JsonElement data = jsonResponse.RootElement.GetProperty("jsondata");
 
-    FinnhubLatestSecurityPriceDto response = JsonSerializer
-        .Deserialize<FinnhubLatestSecurityPriceDto>(data[0].GetRawText(),
-            base.JsonSerializerOptions);
+    EndOfDayPricesDto response = JsonSerializer
+        .Deserialize<EndOfDayPricesDto>(data[0].GetRawText(), base.JsonSerializerOptions);
 
     _logger.LogInformation("{LOGGER_PREFIX} Retrieved prices : JSON response - {ResponseJson}",
         LOGGER_PREFIX, JsonSerializer.Serialize(response, base.JsonSerializerOptions));
