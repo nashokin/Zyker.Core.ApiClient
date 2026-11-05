@@ -1,6 +1,7 @@
 # Generic HTTP client
 
-[![DASH.Core.ApiClient package in WealthO2@Local feed in Azure Artifacts](https://wealtho2.feeds.visualstudio.com/_apis/public/Packaging/Feeds/WealthO2@Local/Packages/f2ca4e9d-ae1e-414d-8c1b-2df19e015eeb/Badge)](https://wealtho2.visualstudio.com/MDA%20Operator/_artifacts/feed/WealthO2@Local/NuGet/DASH.Core.ApiClient?preferRelease=true) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=DASH.Core.ApiClient&metric=coverage&token=4f095bc8bff9e12c6f17c20642489a765d4eff66)](https://sonarcloud.io/summary/new_code?id=DASH.Core.ApiClient)
+[![.NET](https://github.com/nashokin/Zyker.Core.ApiClient/actions/workflows/dotnet.yml/badge.svg?branch=main)](https://github.com/nashokin/Zyker.Core.ApiClient/actions/workflows/dotnet.yml)
+![NuGet Version](https://img.shields.io/nuget/v/Zyker.Core.ApiClient)
 
 ---
 

@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
+        <Version>1.0.2</Version>
         <TargetFramework>net10.0</TargetFramework>
         <ImplicitUsings>disable</ImplicitUsings>
         <Nullable>enable</Nullable>
@@ -14,7 +15,7 @@
         <Company>Zyker</Company>
         <Description>Generic HTTP client implementation to compose and send HTTP message requests.</Description>
         <PackageIcon>ZYKER--logo.png</PackageIcon>
-        <PackageIconUrl>https://roarcdn.blob.core.windows.net/webresources/img/dash-logo-square-white.png</PackageIconUrl>
+        <PackageIconUrl>https://github.com/nashokin/Zyker.Core.ApiClient/blob/957ba03d97bb632d181dded7e017898a7624b9c3/ZYKER--logo.png</PackageIconUrl>
         <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
         <PackageProjectUrl>https://github.com/nashokin/Zyker.Core.ApiClient</PackageProjectUrl>
         <RepositoryUrl>https://github.com/nashokin/Zyker.Core.ApiClient</RepositoryUrl>
