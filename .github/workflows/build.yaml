@@ -66,9 +66,13 @@ jobs:
           dotnet sonarscanner begin \
             /k:"nashokin_Zyker.Core.ApiClient" \
             /o:"nashokin" \
-            /d:sonar.token="${SONAR_TOKEN}"
+            /d:sonar.token="${SONAR_TOKEN}" \
+            /d:sonar.cs.opencover.reportsPaths="**/coverage.opencover.xml"
 
           dotnet build --configuration Release
+
+          dotnet test \
+            --configuration Release
 
           dotnet sonarscanner end \
             /d:sonar.token="${SONAR_TOKEN}"
