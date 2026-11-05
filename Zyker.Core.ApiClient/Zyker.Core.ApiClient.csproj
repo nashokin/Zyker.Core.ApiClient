@@ -4,7 +4,33 @@
         <TargetFramework>net10.0</TargetFramework>
         <ImplicitUsings>disable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <Authors>Daniel Nashokin</Authors>
+        <PackageTags>Zyker;Core;Api;ApiClient</PackageTags>
     </PropertyGroup>
+
+    <PropertyGroup>
+        <Title>Generic HTTP client</Title>
+        <Authors>Daniel Nashokin</Authors>
+        <Company>Zyker</Company>
+        <Description>Generic HTTP client implementation to compose and send HTTP message requests.</Description>
+        <PackageIcon>ZYKER--logo.png</PackageIcon>
+        <PackageIconUrl>https://roarcdn.blob.core.windows.net/webresources/img/dash-logo-square-white.png</PackageIconUrl>
+        <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+        <PackageProjectUrl>https://github.com/nashokin/Zyker.Core.ApiClient</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/nashokin/Zyker.Core.ApiClient</RepositoryUrl>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="..\README.md">
+            <Pack>True</Pack>
+            <PackagePath>\</PackagePath>
+        </None>
+        <None Include="..\ZYKER--logo.png">
+            <Pack>True</Pack>
+            <PackagePath>\</PackagePath>
+        </None>
+    </ItemGroup>
 
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.3.13" />

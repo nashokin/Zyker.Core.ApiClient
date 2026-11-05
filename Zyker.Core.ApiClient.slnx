@@ -3,6 +3,7 @@
     <File Path=".editorconfig" />
     <File Path=".gitignore" />
     <File Path="README.md" />
+    <File Path="ZYKER--logo.png" />
   </Folder>
   <Project Path="Zyker.Core.ApiClient.Tests/Zyker.Core.ApiClient.Tests.csproj" />
   <Project Path="Zyker.Core.ApiClient/Zyker.Core.ApiClient.csproj" />
