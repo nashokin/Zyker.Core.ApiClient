@@ -1,7 +1,10 @@
 # Generic HTTP client
 
-[![Build](https://github.com/nashokin/Zyker.Core.ApiClient/actions/workflows/build.yaml/badge.svg?branch=main)](https://github.com/nashokin/Zyker.Core.ApiClient/actions/workflows/build.yaml)
+[![Build](https://github.com/nashokin/Zyker.Core.ApiClient/actions/workflows/build.yaml/badge.svg)](https://github.com/nashokin/Zyker.Core.ApiClient/actions/workflows/build.yaml)
 ![NuGet Version](https://img.shields.io/nuget/v/Zyker.Core.ApiClient)
+[![Quality gate status](https://sonarcloud.io/api/project_badges/measure?project=nashokin_Zyker.Core.ApiClient&metric=alert_status&token=6a806cb7475b78450092f05483cb4a5d91da2f76)](https://sonarcloud.io/summary/new_code?id=nashokin_Zyker.Core.ApiClient)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=nashokin_Zyker.Core.ApiClient&metric=coverage&token=6a806cb7475b78450092f05483cb4a5d91da2f76)](https://sonarcloud.io/summary/new_code?id=nashokin_Zyker.Core.ApiClient)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 A reusable **.NET** base library for building **HTTP API** integrations. Features include typed request/response handling, **JSON** processing, file downloads, centralized error handling, configurable timeouts, and `Microsoft.Extensions.Logging` support.
 

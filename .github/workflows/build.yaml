@@ -8,8 +8,9 @@ on:
 
   pull_request:
     branches:
-      - main
       - develop
+      - release/**
+      - feature/**
     types:
       - opened
       - synchronize
@@ -22,39 +23,37 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v4
+    permissions:
+      contents: read
+      id-token: write # enable GitHub OIDC token issuance for this job
 
-      - uses: actions/setup-dotnet@v4
+    steps:
+      # Pre-requisites: checkout and setup .net 10 SDK
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .net 10 SDK
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 10.0.x
 
-      - run: dotnet restore
-      - run: dotnet build --configuration Release --no-restore
+      - name: Display .net version
+        run: dotnet --version
 
-  test:
-    needs: build
-    runs-on: ubuntu-latest
+      # Build projects in the solution
+      - name: Restore
+        run: dotnet restore
 
-    steps:
-      - uses: actions/checkout@v4
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
 
-      - uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: 10.0.x
+      # Run tests and collect coverage
+      - name: Test
+        run: dotnet test --configuration Release --no-build
 
-      - run: dotnet test --configuration Release
-
-  analyse:
-    needs: test
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: 10.0.x
+      # Run SonarCloud analysis
+      - name: Install dotnet-coverage tool
+        run: dotnet tool install --global dotnet-coverage
 
       - name: Install SonarScanner
         run: dotnet tool install --global dotnet-sonarscanner
@@ -64,47 +63,18 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           dotnet sonarscanner begin \
-            /k:"nashokin_Zyker.Core.ApiClient" \
-            /o:"nashokin" \
-            /d:sonar.token="${SONAR_TOKEN}" \
-            /d:sonar.cs.opencover.reportsPaths="**/coverage.opencover.xml"
+              /k:"nashokin_Zyker.Core.ApiClient" \
+              /o:"nashokin" \
+              /d:sonar.login="${SONAR_TOKEN}" \
+              /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
 
-          dotnet build --configuration Release
+          dotnet build --no-incremental
 
-          dotnet test \
-            --configuration Release \
-            /p:CollectCoverage=true \
-            /p:CoverletOutputFormat=opencover \
-            /p:CoverletOutput=coverage/
+          dotnet-coverage collect 'dotnet test' -f xml  -o 'coverage.xml'
 
-            find . -name "*.opencover.xml"
+          dotnet sonarscanner end /d:sonar.login="${SONAR_TOKEN}"
 
-          dotnet sonarscanner end \
-            /d:sonar.token="${SONAR_TOKEN}"
-
-  publish:
-    needs: analyse
-    runs-on: ubuntu-latest
-
-    permissions:
-      contents: read
-      id-token: write # enable GitHub OIDC token issuance for this job
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: 10.0.x
-
-      - name: Restore
-        run: dotnet restore
-
-      - name: Build
-        run: dotnet build --configuration Release --no-restore
-
+      # Pack and publish NuGet package
       - name: Generate Version
         id: version
         shell: bash
