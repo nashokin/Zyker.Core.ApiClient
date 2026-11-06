@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>net10.0</TargetFramework>
         <OutputType>Exe</OutputType>
-        <ImplicitUsings>enable</ImplicitUsings>
+        <ImplicitUsings>disable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <!-- Enable Microsoft Testing Platform -->
         <UseMicrosoftTestingPlatformRunner>true</UseMicrosoftTestingPlatformRunner>
