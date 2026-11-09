@@ -5,6 +5,8 @@ on:
     branches:
       - main
       - develop
+    tags:
+      - "v*"
 
   pull_request:
     branches:
@@ -31,6 +33,8 @@ jobs:
       # Pre-requisites: checkout and setup .net 10 SDK
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup .net 10 SDK
         uses: actions/setup-dotnet@v4
@@ -67,25 +71,28 @@ jobs:
               /o:"nashokin" \
               /d:sonar.login="${SONAR_TOKEN}" \
               /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
-
           dotnet build --no-incremental
-
           dotnet-coverage collect 'dotnet test' -f xml  -o 'coverage.xml'
-
           dotnet sonarscanner end /d:sonar.login="${SONAR_TOKEN}"
 
-      # Pack and publish NuGet package
+        # Pack and publish NuGet package
       - name: Generate Version
         id: version
         shell: bash
         run: |
-          VERSION=$(grep -oPm1 "(?<=<Version>)[^<]+" Zyker.Core.ApiClient/Zyker.Core.ApiClient.csproj)
+          if [[ "${GITHUB_REF_TYPE}" == "tag" ]]; then
+            VERSION="${GITHUB_REF_NAME#v}"
 
-          if [[ "${GITHUB_REF_NAME}" == "develop" ]]; then
-          VERSION="${VERSION}-prerelease.${GITHUB_RUN_NUMBER}"
+          elif [[ "${GITHUB_REF_NAME}" == "develop" ]]; then
+            VERSION=$(grep -oPm1 '(?<=<Version>)[^<]+' Zyker.Core.ApiClient/Zyker.Core.ApiClient.csproj)
+            VERSION="${VERSION}-prerelease.${GITHUB_RUN_NUMBER}"
+
+          else
+            VERSION=$(grep -oPm1 '(?<=<Version>)[^<]+' Zyker.Core.ApiClient/Zyker.Core.ApiClient.csproj)
           fi
 
-          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "Package Version: $VERSION"
 
       - name: Pack
         run: |

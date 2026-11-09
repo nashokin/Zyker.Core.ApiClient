@@ -6,7 +6,7 @@
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=nashokin_Zyker.Core.ApiClient&metric=coverage&token=6a806cb7475b78450092f05483cb4a5d91da2f76)](https://sonarcloud.io/summary/new_code?id=nashokin_Zyker.Core.ApiClient)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-A reusable **.NET** base library for building **HTTP API** integrations. Features include typed request/response handling, **JSON** processing, file downloads, centralized error handling, configurable timeouts, and `Microsoft.Extensions.Logging` support.
+Reusable **.NET** base library for building **HTTP API** integrations. Features include typed request/response handling, **JSON** processing, file downloads, centralised error handling, configurable timeouts and `Microsoft.Extensions.Logging` support.
 
 ---
 
@@ -21,7 +21,7 @@ public class MyApiClient
     [CODE], etc. ...
 }
 ```
- - Instantiate the HTTP client with one of the constructors, passing HTTP client factory and/or JSON parsing options
+ - Instantiate **HTTP** client with one of the constructors, passing HTTP client factory and/or JSON parsing options
 ```csharp
 public MyApiClient(
     IHttpClientFactory httpClientFactory,
