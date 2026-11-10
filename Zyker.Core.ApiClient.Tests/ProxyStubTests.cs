@@ -13,7 +13,9 @@ using System.Threading.Tasks;
 using Xunit;
 
 namespace Zyker.Core.ApiClient.Tests;
-
+/// <summary>
+///     Stub proxy HTTP client tests.
+/// </summary>
 public class ProxyStubTests
 {
     private string _requestUri;

@@ -13,6 +13,9 @@ using System.Threading.Tasks;
 using Xunit;
 
 namespace Zyker.Core.ApiClient.Tests;
+/// <summary>
+///     Concrete HTTP client tests.
+/// </summary>
 public class ConcreteTests
 {
     private readonly string _requestUri;

@@ -2,7 +2,9 @@ using System.Net.Http.Headers;
 using Xunit;
 
 namespace Zyker.Core.ApiClient.Tests;
-
+/// <summary>
+///     File download functionality tests.
+/// </summary>
 public class DownloadFileInfoTests
 {
     [Fact(DisplayName = "DownloadFileInfo -> test that all properties are set correctly in the constructor")]
